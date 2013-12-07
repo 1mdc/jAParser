@@ -4,24 +4,26 @@ import java.lang.reflect.Field;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ *
+ * @author ong
+ * @param <E>
+ */
 public class AParser<E> {
-    private String content = "";
-    
+
+    private String content = ""; ///< input content for parsing
+
     /**
-     * @param myobject 
+     * @param myobject
      */
-    public void run(E myobject)
-    {
-        for (Field f : myobject.getClass().getFields())
-        {
+    public void run(E myobject) {
+        for (Field f : myobject.getClass().getFields()) {
             IAParser interf = f.getAnnotation(IAParser.class);
-            if (interf != null)
-            {
+            if (interf != null) {
                 Pattern p = Pattern.compile(interf.expression(), interf.flag());
                 Matcher m = p.matcher(content);
-                if (m.find())
-                {
-                    
+                if (m.find()) {
+
                 }
             }
         }
